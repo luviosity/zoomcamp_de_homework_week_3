@@ -1,16 +1,10 @@
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.google_cloud_storage import GoogleCloudStorage
-from pandas import DataFrame
-import os
 from google.cloud import storage
 
 if 'data_exporter' not in globals():
     from mage_ai.data_preparation.decorators import data_exporter
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '/home/src/keys/key.json'
-bucket_name = "mage-demo-bucket-andreev"
 
+bucket_name = "terraform-demo-412521-ny-taxi-data"
 
 @data_exporter
 def export_data_to_google_cloud_storage(files_list: list, **kwargs) -> None:
